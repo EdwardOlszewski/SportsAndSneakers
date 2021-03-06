@@ -44,4 +44,15 @@ const getVideos2 = asynchHandler(async (req, res) => {
   res.json({ videos, page, pages: Math.ceil(count / pageSize) })
 })
 
-export { getVideos, createVideo, getVideos2 }
+// @desc    Fetch all video pages
+// @route   GET /api/videos
+// @access  Public
+const getVideosPages = asynchHandler(async (req, res) => {
+  const pageSize = 6
+  const page = Number(req.query.pageNumber) || 1
+  const totalVideoCount = Number(req.query.totalVideoCount)
+
+  res.json({ page, pages: Math.ceil(totalVideoCount / pageSize) })
+})
+
+export { getVideos, createVideo, getVideos2, getVideosPages }
