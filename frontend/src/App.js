@@ -10,7 +10,7 @@ import ShopScreen from './userScreens/ShopScreen'
 import PictureScreen from './userScreens/PictureScreen'
 // Admin screens
 import AdminLoginScreen from './adminScreens/AdminLoginScreen'
-// Footer
+// Foote
 import Footer from './components/Footer'
 
 const App = () => {
