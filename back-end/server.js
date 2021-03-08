@@ -9,6 +9,7 @@ import videoRoutes from './routes/videoRoutes.js'
 import imageRoutes from './routes/imageRoutes.js'
 import imageUploadRoutes from './routes/imageUploadRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import postRoutes from './routes/postRoutes.js'
 
 // Init dotenv
 dotenv.config()
@@ -32,6 +33,7 @@ app.use('/api/videos', videoRoutes)
 app.use('/api/upload', imageUploadRoutes)
 app.use('/api/images', imageRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/posts', postRoutes)
 
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))

@@ -7,17 +7,21 @@ import ImageCarousel from '../components/ImageCarousel'
 import NewestImages from '../components/NewestImages'
 import Paginate from '../components/Paginate'
 import { getAllImages } from '../actions/imageActions'
-import Loader from '../components/Loader'
 import ImageUploadModal from '../components/ImageUploadModal'
 import {
   IMAGE_DELETE_RESET,
   UPLOAD_IMAGE_RESET,
   CREATE_IMAGE_RESET,
 } from '../constants/imageConstants'
+import Loader from '../components/Loader'
+import Meta from '../components/Meta'
 
 const PictureScreen = ({ match }) => {
   // Assign useDispatch hook to dispatch actions
   const dispatch = useDispatch()
+
+  // Get page number from the URL
+  const pageNumber = match.params.pageNumber || 1
 
   // Get if on mobile device or not
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
@@ -43,29 +47,28 @@ const PictureScreen = ({ match }) => {
   }
 
   if (deleteSuccess) {
-    dispatch(getAllImages())
+    dispatch(getAllImages(pageNumber))
     dispatch({ type: IMAGE_DELETE_RESET })
   }
 
   useEffect(() => {
-    dispatch(getAllImages())
-  }, [dispatch])
+    dispatch(getAllImages(pageNumber))
+  }, [dispatch, pageNumber])
 
   return (
     <>
+      <Meta title='SportsAndSneakers - Gallery' />
       {loading || deleteLoading ? (
         <Loader />
       ) : (
         <div className='video-screen'>
           <ListGroup>
             <h1 style={{ marginBottom: '1rem' }}>Gallery</h1>
-            {isMobile ? <ImageCarousel /> : <NewestImages images={images} />}
           </ListGroup>
-
           <Row>
             {images.map((image) => (
               <Col
-                key={image}
+                key={image._id}
                 xs={6}
                 sm={6}
                 md={4}
@@ -78,7 +81,7 @@ const PictureScreen = ({ match }) => {
             ))}
           </Row>
           <Nav style={{ marginTop: '.5rem' }}>
-            <Paginate pages={pages} page={page} />
+            <Paginate pages={pages} page={page} keyword={'pictures'} />
             <div style={{ marginLeft: '2rem' }}>
               {userInfo && userInfo.isAdmin ? <ImageUploadModal /> : <></>}
             </div>
@@ -91,4 +94,15 @@ const PictureScreen = ({ match }) => {
 
 export default PictureScreen
 
-//{isMobile ? <ImageCarousel /> : <NewestImages images={images} />}
+/*
+
+<ListGroup>
+            <h1 style={{ marginBottom: '1rem' }}>Gallery</h1>
+            {isMobile ? (
+              <ImageCarousel images={images} />
+            ) : (
+              <NewestImages images={images} />
+            )}
+          </ListGroup>
+
+*/

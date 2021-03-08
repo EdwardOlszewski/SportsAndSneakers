@@ -4,7 +4,7 @@ main {
 }
 body {
   margin: 0;
-  background-image: url('background5.png');
+  background-image: url('./images/background2.png');
 }
 
 /* --- Header --- */

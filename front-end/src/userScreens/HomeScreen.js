@@ -1,51 +1,144 @@
-import React from 'react'
-import { Container, Card, Row, Col, Image } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Container, Card, Row, Col, Image, Button, Form } from 'react-bootstrap'
+import { listPosts, updatePost } from '../actions/postsActions'
+import {
+  POSTS_UPDATE_RESET,
+  LIST_POSTS_RESET,
+} from '../constants/postsConstants'
+import Loader from '../components/Loader'
+import Meta from '../components/Meta'
 
 const HomeScreen = () => {
+  // Assign useDispatch hook to dispatch actions
+  const dispatch = useDispatch()
+
+  // Declare new state variables and functions
+  const [whoIAm, setWhoIAm] = useState('')
+  const [whatIDo, setWhatIDo] = useState('')
+  const [whereToFindMe, setWhereToFindMe] = useState('')
+
+  // Pull data from postList state
+  const postList = useSelector((state) => state.postList)
+  const { success, posts } = postList
+
+  // Pull data from userLogin state
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
+  // Pull data from postUpdate state
+  const postUpdate = useSelector((state) => state.postUpdate)
+  const { success: updateSuccess } = postUpdate
+
+  // Function called on submit
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(updatePost({ _id: posts._id, whoIAm, whatIDo, whereToFindMe }))
+  }
+
+  // on render get all posts
+  useEffect(() => {
+    if (!posts) {
+      dispatch(listPosts())
+    }
+    if (posts) {
+      setWhoIAm(posts.whoIAm)
+      setWhatIDo(posts.whatIDo)
+      setWhereToFindMe(posts.whereToFindMe)
+    }
+    if (updateSuccess) {
+      dispatch({ type: POSTS_UPDATE_RESET })
+      dispatch({ type: LIST_POSTS_RESET })
+    }
+  }, [dispatch, posts, updateSuccess])
+
   return (
     <Container>
+      <Meta title='SportsAndSneakers' />
       <Row>
         <Col sm={12} md={12} lg={6} xl={6} style={{ marginTop: '2rem' }}>
           <Card className='profile-cards'>
             <Card.Body>
               <Image
                 className='profile-pic'
-                src={require('./profilePic.jpg')}
+                src={require('../images/profilePic.jpg')}
               ></Image>
             </Card.Body>
           </Card>
         </Col>
         <Col sm={12} md={12} lg={6} xl={6} style={{ marginTop: '2rem' }}>
-          <Card className='profile-cards'>
-            <Card.Title style={{ padding: '1.2rem', textAlign: 'center' }}>
-              Evan Kay
-            </Card.Title>
-            <Card.Body style={{ marginTop: '-2rem' }}>
-              <h6>Who I am:</h6>
-              Hey what’s up? My name is Evan and thank you for visiting my page.
-              Some background information on me, I’m a sneaker head and amateur
-              MMA fighter. I’ve competed in multiple sports for 17 years of my
-              life. I’m a sports and sneakers enthusiast, I love to gain and
-              share knowledge regarding sports and sneakers. If you love sports,
-              sports talk, sneakers, or both then you’re in the right place.
-              <br />
-              <br />
-              <h6>What I do:</h6>
-              I make YouTube videos and content on social media and share
-              information about sports news, updates, debates, as well as
-              sneaker news, updates, unboxings, and reviews. I cover sneaker
-              releases, customs, my own customs and also sports news like
-              Football, Baseball, Basketball, and MMA. As always, I give my own
-              thoughts and opinions and listen to yours. I love engaging with
-              everyone and talking about both sports and sneakers in hopes that
-              a community will be created and it builds bigger and bigger over
-              time. <br /> <br />
-              <h6>Where to find me:</h6>
-              Visit my YouTube channel Sports and Sneakers, consider subscribing
-              and giving me a follow on social media! Stay tuned and have a
-              great day.
-            </Card.Body>
-          </Card>
+          {!success && !updateSuccess ? (
+            <Loader />
+          ) : userInfo && userInfo.isAdmin ? (
+            <Card className='profile-cards'>
+              <Card.Title style={{ padding: '1.2rem', textAlign: 'center' }}>
+                Evan Kay
+              </Card.Title>
+              <Card.Body style={{ marginTop: '-2rem' }}>
+                <Form onSubmit={submitHandler}>
+                  <Form.Group controlId='whoIAm'>
+                    <Form.Label>
+                      <h6>Who I am:</h6>
+                    </Form.Label>
+                    <Form.Control
+                      style={{ height: '15rem' }}
+                      as='textarea'
+                      rows={2}
+                      type='whoIAm'
+                      value={whoIAm}
+                      onChange={(e) => setWhoIAm(e.target.value)}
+                    ></Form.Control>
+                  </Form.Group>
+                  <Form.Group controlId='whatIDo'>
+                    <Form.Label>
+                      <h6>Who I do:</h6>
+                    </Form.Label>
+                    <Form.Control
+                      style={{ height: '15rem' }}
+                      as='textarea'
+                      type='whatIDo'
+                      placeholder={posts.whatIDo}
+                      value={whatIDo}
+                      onChange={(e) => setWhatIDo(e.target.value)}
+                    ></Form.Control>
+                  </Form.Group>
+                  <Form.Group controlId='whereToFindMe'>
+                    <Form.Label>
+                      <h6>Where to find me:</h6>
+                    </Form.Label>
+                    <Form.Control
+                      style={{ height: '15rem' }}
+                      as='textarea'
+                      type='whereToFindMe'
+                      placeholder={posts.whereToFindMe}
+                      value={whereToFindMe}
+                      onChange={(e) => setWhereToFindMe(e.target.value)}
+                    ></Form.Control>
+                  </Form.Group>
+                  <Button type='submit' variant='primary'>
+                    Update
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          ) : (
+            <Card className='profile-cards'>
+              <Card.Title style={{ padding: '1.2rem', textAlign: 'center' }}>
+                Evan Kay
+              </Card.Title>
+              <Card.Body style={{ marginTop: '-2rem' }}>
+                <h6>Who I am:</h6>
+                {posts.whoIAm}
+                <br />
+                <br />
+                <h6>What I do:</h6>
+                {posts.whatIDo}
+                <br /> <br />
+                <h6>Where to find me:</h6>
+                {posts.whereToFindMe}
+              </Card.Body>
+            </Card>
+          )}
         </Col>
       </Row>
     </Container>

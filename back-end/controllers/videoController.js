@@ -5,28 +5,27 @@ import Video from '../models/videoModel.js'
 // @route   POST /api/videos
 // @access  Public
 const createVideo = asynchHandler(async (req, res) => {
-  const { url } = req.body
+  const { url, publishedAt } = req.body
 
-  const video = await Video.create({
-    url,
-  })
-
-  if (video) {
-    res.status(201).json({
-      url: video.url,
-    })
+  const videoExists = await Video.findOne({ url })
+  if (videoExists) {
+    console.log(`video with url: ${url} already exists`)
   } else {
-    res.status(400)
-    throw new Error('Invalid video data')
+    const video = await Video.create({
+      url,
+      publishedAt,
+    })
+    if (video) {
+      res.status(201).json({
+        _id: video._id,
+        url: video.url,
+        publishedAt: video.publishedAt,
+      })
+    } else {
+      res.status(400)
+      throw new Error('Invalid Video data')
+    }
   }
-})
-
-// @desc    Fetch all videos
-// @route   GET /api/videos
-// @access  Public
-const getVideos = asynchHandler(async (req, res) => {
-  const videos = await Video.find()
-  res.json({ videos })
 })
 
 // @desc    Fetch all videos
@@ -38,6 +37,7 @@ const getVideos2 = asynchHandler(async (req, res) => {
 
   const count = await Video.countDocuments()
   const videos = await Video.find()
+    .sort({ publishedAt: -1 })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
 
@@ -55,4 +55,4 @@ const getVideosPages = asynchHandler(async (req, res) => {
   res.json({ page, pages: Math.ceil(totalVideoCount / pageSize) })
 })
 
-export { getVideos, createVideo, getVideos2, getVideosPages }
+export { createVideo, getVideos2, getVideosPages }

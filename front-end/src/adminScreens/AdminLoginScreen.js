@@ -13,11 +13,9 @@ const AdminLoginScreen = ({ history }) => {
   // Declare new state variables using useState hook
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [show, setShow] = useState(false)
   const [loggedIn, setLogin] = useState(false)
 
-  const handleClose = () => setShow(false)
-  //const handleShow = () => setShow(true)
+  const handleClose = () => setLogin(false)
   const handleLoggedIn = () => setLogin(true)
 
   // Function to be called on submit

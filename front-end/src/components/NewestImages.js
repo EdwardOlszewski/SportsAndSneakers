@@ -6,7 +6,7 @@ const NewestImages = ({ images }) => {
     <div className='newest-images'>
       <Row style={{ margin: 'auto', textAlign: 'center' }}>
         {images.slice(0, 4).map((image) => (
-          <Col xs={6} sm={6} md={4} lg={3} xl={3}>
+          <Col xs={6} sm={6} md={4} lg={3} xl={3} key={image.imageURL}>
             <Card style={{ padding: '.2rem' }}>
               <Image
                 className='img'

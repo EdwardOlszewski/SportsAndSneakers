@@ -3,9 +3,6 @@ import {
   VIDEO_REQUEST,
   VIDEO_SUCCESS,
   VIDEO_FAIL,
-  VIDEO_PAGES_REQUEST,
-  VIDEO_PAGES_SUCCESS,
-  VIDEO_PAGES_FAIL,
   VIDEO_CREATE_REQUEST,
   VIDEO_CREATE_SUCCESS,
   VIDEO_CREATE_FAIL,
@@ -14,13 +11,23 @@ import {
   YOUTUBE_VIDEO_FAIL,
 } from '../constants/videoConstants'
 
-export const createVideo = () => async (dispatch, getState) => {
+export const createVideo = (url, publishedAt) => async (dispatch, getState) => {
   try {
     dispatch({
       type: VIDEO_CREATE_REQUEST,
     })
 
-    const { data } = await axios.post(`/api/videos`, {})
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+
+    const { data } = await axios.post(
+      `/api/videos`,
+      { url, publishedAt },
+      config
+    )
 
     dispatch({
       type: VIDEO_CREATE_SUCCESS,
@@ -38,28 +45,7 @@ export const createVideo = () => async (dispatch, getState) => {
   }
 }
 
-export const listAllVideos = () => async (dispatch) => {
-  try {
-    dispatch({ type: VIDEO_REQUEST })
-
-    const { data } = await axios.get('/api/videos')
-
-    dispatch({
-      type: VIDEO_SUCCESS,
-      payload: data,
-    })
-  } catch (error) {
-    dispatch({
-      type: VIDEO_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    })
-  }
-}
-
-export const listAllVideos2 = (pageNumber = '') => async (dispatch) => {
+export const listAllVideos = (pageNumber = '') => async (dispatch) => {
   try {
     dispatch({ type: VIDEO_REQUEST })
 
@@ -91,7 +77,7 @@ export const listYoutubeVideos = (pageNumber = '') => async (dispatch) => {
     }
 
     const { data } = await axios.get(
-      'https://www.googleapis.com/youtube/v3/search?key=AIzaSyAkW-qPYcqN3LYEfFTRP3YEJfSEdP7lvIU&channelId=UCzeV03hagrR7mtE30TqpQ8g&type=video&part=id&fields=items(id(videoId))&order=date&maxResults=20',
+      'https://www.googleapis.com/youtube/v3/search?key=AIzaSyArTHtmLPFTgmJEoymS3MLQA2b7uOtKRqA&channelId=UCzeV03hagrR7mtE30TqpQ8g&type=video&part=snippet&fields=items(id(videoId), snippet(publishedAt))&order=date&maxResults=20',
       config
     )
 
@@ -102,31 +88,6 @@ export const listYoutubeVideos = (pageNumber = '') => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: YOUTUBE_VIDEO_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    })
-  }
-}
-
-export const getVideoPages = (pageNumber = '', totalVideoCount) => async (
-  dispatch
-) => {
-  try {
-    dispatch({ type: VIDEO_PAGES_REQUEST })
-
-    const { data } = await axios.get(
-      `/api/videos/pages?pageNumber=${pageNumber}&totalVideoCount=${totalVideoCount}`
-    )
-
-    dispatch({
-      type: VIDEO_PAGES_SUCCESS,
-      payload: data,
-    })
-  } catch (error) {
-    dispatch({
-      type: VIDEO_PAGES_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

@@ -19,7 +19,7 @@ const Picture = ({ image }) => {
   return (
     <Card>
       <Card style={{ padding: '.2rem' }}>
-        <Image src={image.imageURL}></Image>
+        <Image src={image.imageURL} style={{ width: '100%' }}></Image>
         {userInfo && userInfo.isAdmin ? (
           <Card.Body>
             <Button

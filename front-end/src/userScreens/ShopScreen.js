@@ -1,9 +1,11 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
+import Meta from '../components/Meta'
 
 const ShopScreen = () => {
   return (
     <Container>
+      <Meta title='SportsAndSneakers - Shop' />
       <p className='under-construction'>
         <i class='fas fa-hammer'></i> Shop Coming Soon!
       </p>

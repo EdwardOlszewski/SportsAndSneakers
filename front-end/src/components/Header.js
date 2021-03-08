@@ -24,7 +24,7 @@ const Header = ({ match }) => {
       }}
     >
       <Navbar.Brand href='/'>
-        <Image src={require('./Sports&Sneakers Title.png')}></Image>
+        <Image src={require('../images/bannerIMG.png')}></Image>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>

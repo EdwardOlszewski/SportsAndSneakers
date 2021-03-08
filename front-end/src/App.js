@@ -17,10 +17,17 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <main>
+      <main className='main-body'>
         <div className='mainContainer'>
-          <Route path='/pictures' component={PictureScreen} />
           <Route path='/store' component={ShopScreen} />
+
+          <Route path='/pictures' component={PictureScreen} exact />
+          <Route
+            path='/pictures/page/:pageNumber'
+            component={PictureScreen}
+            exact
+          />
+
           <Route path='/videos' component={VideoScreen} exact />
           <Route
             path='/videos/page/:pageNumber'

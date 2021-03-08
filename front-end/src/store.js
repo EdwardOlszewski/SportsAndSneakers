@@ -2,9 +2,8 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
-import { listVideosReducer2 } from './reducers/videosReducers.js'
+import { listVideosReducer } from './reducers/videosReducers.js'
 import { listYoutubeVideosReducer } from './reducers/videosReducers.js'
-import { videoPagesReducer } from './reducers/videosReducers.js'
 
 import { uploadImageReducer } from './reducers/imageReducers.js'
 import { createImageReducer } from './reducers/imageReducers.js'
@@ -13,15 +12,23 @@ import { deleteImageReducer } from './reducers/imageReducers.js'
 
 import { userLoginReducer } from './reducers/userReducers.js'
 
+import {
+  listPostsReducer,
+  updatePostsReducer,
+  createPostsReducer,
+} from './reducers/postsReducers.js'
+
 const reducer = combineReducers({
-  listVideos: listVideosReducer2,
+  listVideos: listVideosReducer,
   imageUpload: uploadImageReducer,
   imageCreate: createImageReducer,
   allImages: getAllImagesReducer,
   userLogin: userLoginReducer,
   imageDelete: deleteImageReducer,
   youtubeVideos: listYoutubeVideosReducer,
-  videoPages: videoPagesReducer,
+  postList: listPostsReducer,
+  postUpdate: updatePostsReducer,
+  createPost: createPostsReducer,
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
