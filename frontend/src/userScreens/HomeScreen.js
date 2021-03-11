@@ -89,7 +89,7 @@ const HomeScreen = () => {
                   </Form.Group>
                   <Form.Group controlId='whatIDo'>
                     <Form.Label>
-                      <h6>Who I do:</h6>
+                      <h6>What My Content Is:</h6>
                     </Form.Label>
                     <Form.Control
                       style={{ height: '15rem' }}
@@ -102,7 +102,7 @@ const HomeScreen = () => {
                   </Form.Group>
                   <Form.Group controlId='whereToFindMe'>
                     <Form.Label>
-                      <h6>Where to find me:</h6>
+                      <h6>Where To Check My Content:</h6>
                     </Form.Label>
                     <Form.Control
                       style={{ height: '15rem' }}
@@ -129,10 +129,10 @@ const HomeScreen = () => {
                 {posts.whoIAm}
                 <br />
                 <br />
-                <h6>What I do:</h6>
+                <h6>What My Content Is:</h6>
                 {posts.whatIDo}
                 <br /> <br />
-                <h6>Where to find me:</h6>
+                <h6>Where To Check My Content:</h6>
                 {posts.whereToFindMe}
               </Card.Body>
             </Card>

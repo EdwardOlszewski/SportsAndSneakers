@@ -55,8 +55,9 @@ const VideoScreen = ({ match }) => {
       ) : (
         <>
           <ListGroup>
-            <h1>Videos</h1>
+            <h1 className='heading'>Videos</h1>
           </ListGroup>
+
           <Row style={{ paddingTop: '1rem' }}>
             {DBVideos.map((video) => (
               <Col key={video.url} sm={12} md={12} lg={6} xl={4}>
@@ -64,6 +65,7 @@ const VideoScreen = ({ match }) => {
               </Col>
             ))}
           </Row>
+
           <Nav style={{ marginTop: '.5rem' }}>
             <Paginate pages={pages} page={page} keyword={'videos'} />
 

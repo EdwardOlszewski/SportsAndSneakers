@@ -25,19 +25,19 @@ const Header = ({ match }) => {
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='mr-auto'>
           <Nav.Link href='/videos'>
-            <h7 className='nav-links'>
+            <h6 className='nav-links'>
               <i className='fas fa-video'></i> Videos
-            </h7>
+            </h6>
           </Nav.Link>
           <Nav.Link href='/pictures'>
-            <h7 className='nav-links'>
+            <h6 className='nav-links'>
               <i className='fas fa-image'></i> Pictures
-            </h7>
+            </h6>
           </Nav.Link>
           <Nav.Link href='/store'>
-            <h7 className='nav-links'>
+            <h6 className='nav-links'>
               <i className='fas fa-store'></i> Shop
-            </h7>
+            </h6>
           </Nav.Link>
 
           {userInfo && userInfo.isAdmin && (
@@ -51,19 +51,19 @@ const Header = ({ match }) => {
 
         <div>
           <a href='https://www.youtube.com/channel/UCzeV03hagrR7mtE30TqpQ8g?app=desktop&fbclid=IwAR0IM2Eb7dusBTrzWbndeXnxAjvwP3m70uiFx6zTteOQ9Csd7-CpEtY8JTk'>
-            <h7 className='nav-icon'>
+            <h6 className='nav-icon'>
               <i className='fab fa-youtube-square'></i>
-            </h7>
+            </h6>
           </a>
           <a href='https://www.instagram.com/sportsandsneakers2021'>
-            <h7 className='nav-icon'>
+            <h6 className='nav-icon'>
               <i className='fab fa-instagram-square'></i>
-            </h7>
+            </h6>
           </a>
           <a href='mailto:sportsandsneakers2021@gmail.com'>
-            <h7 className='nav-icon'>
+            <h6 className='nav-icon'>
               <i className='fas fa-envelope-square'></i>
-            </h7>
+            </h6>
           </a>
         </div>
       </Navbar.Collapse>
