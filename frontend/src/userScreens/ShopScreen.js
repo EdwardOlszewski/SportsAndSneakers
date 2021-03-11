@@ -7,7 +7,7 @@ const ShopScreen = () => {
     <Container>
       <Meta title='SportsAndSneakers - Shop' />
       <p className='under-construction'>
-        <i class='fas fa-hammer'></i> Shop Coming Soon!
+        <i className='fas fa-hammer'></i> Shop Coming Soon!
       </p>
     </Container>
   )

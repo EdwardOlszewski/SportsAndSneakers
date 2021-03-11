@@ -8,6 +8,7 @@ import {
 } from '../constants/postsConstants'
 import Loader from '../components/Loader'
 import Meta from '../components/Meta'
+import MyImage from '../images/profilePic.jpg'
 
 const HomeScreen = () => {
   // Assign useDispatch hook to dispatch actions
@@ -59,10 +60,7 @@ const HomeScreen = () => {
         <Col sm={12} md={12} lg={6} xl={6} style={{ marginTop: '2rem' }}>
           <Card className='profile-cards'>
             <Card.Body>
-              <Image
-                className='profile-pic'
-                src={require('../images/profilePic.jpg')}
-              ></Image>
+              <Image className='profile-pic' src={MyImage}></Image>
             </Card.Body>
           </Card>
         </Col>

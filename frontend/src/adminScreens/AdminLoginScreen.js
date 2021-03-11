@@ -30,7 +30,7 @@ const AdminLoginScreen = ({ history }) => {
     if (userInfo && userInfo.isAdmin) {
       history.push('/')
     }
-  }, [history])
+  }, [history, userInfo])
 
   return (
     <Modal

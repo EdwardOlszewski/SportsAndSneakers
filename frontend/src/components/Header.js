@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navbar, Image, Nav, NavDropdown } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
+import bannerPic from '../images/bannerIMG.png'
 
 const Header = ({ match }) => {
   // Assign useDispatch hook to dispatch action
@@ -24,7 +25,7 @@ const Header = ({ match }) => {
       }}
     >
       <Navbar.Brand href='/'>
-        <Image src={require('../images/bannerIMG.png')}></Image>
+        <Image src={bannerPic}></Image>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>

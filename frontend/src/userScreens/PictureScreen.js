@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useMediaQuery } from 'react-responsive'
 import { Row, Col, ListGroup, Nav } from 'react-bootstrap'
 import Picture from '../components/Picture'
-import ImageCarousel from '../components/ImageCarousel'
-import NewestImages from '../components/NewestImages'
 import Paginate from '../components/Paginate'
 import { getAllImages } from '../actions/imageActions'
 import ImageUploadModal from '../components/ImageUploadModal'
@@ -23,20 +20,15 @@ const PictureScreen = ({ match }) => {
   // Get page number from the URL
   const pageNumber = match.params.pageNumber || 1
 
-  // Get if on mobile device or not
-  const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
-
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
-  // Go to       and pull out success and videos object
   const allImages = useSelector((state) => state.allImages)
   const { loading, images, page, pages } = allImages
 
   const imageDelete = useSelector((state) => state.imageDelete)
   const { loading: deleteLoading, success: deleteSuccess } = imageDelete
 
-  // Go to listVideos and pull out success and videos object
   const imageCreate = useSelector((state) => state.imageCreate)
   const { success: createImgSucc } = imageCreate
 
@@ -95,14 +87,20 @@ const PictureScreen = ({ match }) => {
 export default PictureScreen
 
 /*
+import { useMediaQuery } from 'react-responsive'
 
-<ListGroup>
-            <h1 style={{ marginBottom: '1rem' }}>Gallery</h1>
-            {isMobile ? (
-              <ImageCarousel images={images} />
-            ) : (
-              <NewestImages images={images} />
-            )}
-          </ListGroup>
+import ImageCarousel from '../components/ImageCarousel'
+import NewestImages from '../components/NewestImages'
 
+  // Get if on mobile device or not
+  const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
+
+  <ListGroup>
+    <h1 style={{ marginBottom: '1rem' }}>Gallery</h1>
+    {isMobile ? (
+      <ImageCarousel images={images} />
+    ) : (
+      <NewestImages images={images} />
+    )}
+  </ListGroup>
 */
