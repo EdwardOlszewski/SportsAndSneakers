@@ -12,18 +12,20 @@ body {
   background-color: #e41b23;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
 }
-
+.nav-links {
+  color: white;
+  font-size: 100%;
+}
 .nav-links:hover {
   opacity: 80%;
 }
-.nav-icons > a {
-  margin-right: 0.5rem;
-}
-.nav-icons > a > i {
+
+.nav-icon {
   color: white;
   font-size: 225%;
+  margin-right: 0.5rem;
 }
-.nav-icons > a > i:hover {
+.nav-icon:hover {
   opacity: 80%;
 }
 

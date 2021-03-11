@@ -16,40 +16,28 @@ const Header = ({ match }) => {
   }
 
   return (
-    <Navbar
-      collapseOnSelect
-      expand='lg'
-      style={{
-        backgroundColor: '#e41b23',
-        boxShadow: '0px 0px 5px 1px rgba(0, 0, 0, 0.5)',
-      }}
-    >
+    <Navbar collapseOnSelect expand='lg' className='header'>
       <Navbar.Brand href='/'>
         <Image src={bannerPic}></Image>
       </Navbar.Brand>
+
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
-        <Nav className='mr-auto' style={{ fontSize: '120%' }}>
-          <Nav.Link
-            href='/videos'
-            className='nav-links'
-            style={{ color: 'white', fontSize: '1rem' }}
-          >
-            <i className='fas fa-video'></i> Videos
+        <Nav className='mr-auto'>
+          <Nav.Link href='/videos'>
+            <h7 className='nav-links'>
+              <i className='fas fa-video'></i> Videos
+            </h7>
           </Nav.Link>
-          <Nav.Link
-            href='/pictures'
-            className='nav-links'
-            style={{ color: 'white', fontSize: '1rem' }}
-          >
-            <i className='fas fa-image'></i> Pictures
+          <Nav.Link href='/pictures'>
+            <h7 className='nav-links'>
+              <i className='fas fa-image'></i> Pictures
+            </h7>
           </Nav.Link>
-          <Nav.Link
-            href='/store'
-            className='nav-links'
-            style={{ color: 'white', fontSize: '1rem' }}
-          >
-            <i className='fas fa-store'></i> Shop
+          <Nav.Link href='/store'>
+            <h7 className='nav-links'>
+              <i className='fas fa-store'></i> Shop
+            </h7>
           </Nav.Link>
 
           {userInfo && userInfo.isAdmin && (
@@ -61,15 +49,21 @@ const Header = ({ match }) => {
           )}
         </Nav>
 
-        <div className='nav-icons'>
+        <div>
           <a href='https://www.instagram.com/sportsandsneakers2021'>
-            <i className='fab fa-youtube-square'></i>
+            <h7 className='nav-icon'>
+              <i className='fab fa-youtube-square'></i>
+            </h7>
           </a>
           <a href='https://www.instagram.com/sportsandsneakers2021'>
-            <i className='fab fa-instagram-square'></i>
+            <h7 className='nav-icon'>
+              <i className='fab fa-instagram-square'></i>
+            </h7>
           </a>
-          <a href='mailto:sportsandsneakers2021@gmail.com' className='icon'>
-            <i className='fas fa-envelope-square'></i>
+          <a href='mailto:sportsandsneakers2021@gmail.com'>
+            <h7 className='nav-icon'>
+              <i className='fas fa-envelope-square'></i>
+            </h7>
           </a>
         </div>
       </Navbar.Collapse>
