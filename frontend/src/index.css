@@ -17,11 +17,7 @@ body {
   font-size: 100%;
 }
 .nav-links:hover {
-  opacity: 50%;
-  transition: opacity 0.2s ease-out;
-  -moz-transition: opacity 0.2s ease-out;
-  -webkit-transition: opacity 0.2s ease-out;
-  -o-transition: opacity 0.2s ease-out;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .nav-icon {
@@ -30,11 +26,7 @@ body {
   margin-right: 0.5rem;
 }
 .nav-icon:hover {
-  opacity: 50%;
-  transition: opacity 0.2s ease-out;
-  -moz-transition: opacity 0.2s ease-out;
-  -webkit-transition: opacity 0.2s ease-out;
-  -o-transition: opacity 0.2s ease-out;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 /* --- Home Screen --- */
