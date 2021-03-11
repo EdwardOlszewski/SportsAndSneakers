@@ -50,7 +50,7 @@ const Header = ({ match }) => {
         </Nav>
 
         <div>
-          <a href='https://www.instagram.com/sportsandsneakers2021'>
+          <a href='https://www.youtube.com/channel/UCzeV03hagrR7mtE30TqpQ8g?app=desktop&fbclid=IwAR0IM2Eb7dusBTrzWbndeXnxAjvwP3m70uiFx6zTteOQ9Csd7-CpEtY8JTk'>
             <h7 className='nav-icon'>
               <i className='fab fa-youtube-square'></i>
             </h7>
