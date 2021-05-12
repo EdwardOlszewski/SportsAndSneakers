@@ -17,7 +17,11 @@ const Picture = ({ image }) => {
   }
 
   return (
-    <Card>
+    <Card
+      style={{
+        boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+      }}
+    >
       <Card style={{ padding: '.2rem' }}>
         <Image src={image.imageURL} style={{ width: '100%' }}></Image>
         {userInfo && userInfo.isAdmin ? (

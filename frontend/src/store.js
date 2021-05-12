@@ -18,6 +18,8 @@ import {
   createPostsReducer,
 } from './reducers/postsReducers.js'
 
+import { listPodcastsReducer } from './reducers/podcastReducers'
+
 const reducer = combineReducers({
   listVideos: listVideosReducer,
   imageUpload: uploadImageReducer,
@@ -29,6 +31,7 @@ const reducer = combineReducers({
   postList: listPostsReducer,
   postUpdate: updatePostsReducer,
   createPost: createPostsReducer,
+  listPodcasts: listPodcastsReducer,
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
@@ -41,8 +44,8 @@ const initialState = {
 
 const middleware = [thunk]
 
-const devTools = applyMiddleware(...middleware)
-//const devTools = composeWithDevTools(applyMiddleware(...middleware))
+//const devTools = applyMiddleware(...middleware)
+const devTools = composeWithDevTools(applyMiddleware(...middleware))
 
 const store = createStore(reducer, initialState, devTools)
 

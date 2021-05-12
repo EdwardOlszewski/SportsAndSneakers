@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Card, Row, Col, Image, Button, Form } from 'react-bootstrap'
+import { Container, Row, Col, Image, Button, Form } from 'react-bootstrap'
 import { listPosts, updatePost } from '../actions/postsActions'
 import {
   POSTS_UPDATE_RESET,
   LIST_POSTS_RESET,
 } from '../constants/postsConstants'
+
+import PictureScreen from './PictureScreen'
+import PodcastScreen from './PodcastScreen'
+import VideoScreen from './VideoScreen'
 import Loader from '../components/Loader'
 import Meta from '../components/Meta'
 import MyImage from '../images/profilePic.jpg'
@@ -54,93 +58,129 @@ const HomeScreen = () => {
   }, [dispatch, posts, updateSuccess])
 
   return (
-    <Container>
+    <Container style={{ marginTop: '10rem' }}>
       <Meta title='SportsAndSneakers' />
-      <Row>
-        <Col sm={12} md={12} lg={6} xl={6} style={{ marginTop: '2rem' }}>
-          <Card className='profile-cards'>
-            <Card.Body>
-              <Image className='profile-pic' src={MyImage}></Image>
-            </Card.Body>
-          </Card>
+      <Row noGutters style={{ marginTop: '3rem' }}>
+        <Col
+          sm={12}
+          md={12}
+          lg={6}
+          xl={6}
+          style={{
+            textAlign: 'center',
+            margin: 'auto',
+          }}
+        >
+          <Image className='profile-pic' src={MyImage}></Image>
         </Col>
-        <Col sm={12} md={12} lg={6} xl={6} style={{ marginTop: '2rem' }}>
-          {!success && !updateSuccess ? (
-            <Loader />
-          ) : userInfo && userInfo.isAdmin ? (
-            <Card className='profile-cards'>
-              <Card.Title style={{ padding: '1.2rem', textAlign: 'center' }}>
-                Evan Kay
-              </Card.Title>
-              <Card.Body style={{ marginTop: '-2rem' }}>
-                <Form onSubmit={submitHandler}>
-                  <Form.Group controlId='whoIAm'>
-                    <Form.Label>
-                      <h6>Who I am:</h6>
-                    </Form.Label>
-                    <Form.Control
-                      style={{ height: '15rem' }}
-                      as='textarea'
-                      rows={2}
-                      type='whoIAm'
-                      value={whoIAm}
-                      onChange={(e) => setWhoIAm(e.target.value)}
-                    ></Form.Control>
-                  </Form.Group>
-                  <Form.Group controlId='whatIDo'>
-                    <Form.Label>
-                      <h6>What My Content Is:</h6>
-                    </Form.Label>
-                    <Form.Control
-                      style={{ height: '15rem' }}
-                      as='textarea'
-                      type='whatIDo'
-                      placeholder={posts.whatIDo}
-                      value={whatIDo}
-                      onChange={(e) => setWhatIDo(e.target.value)}
-                    ></Form.Control>
-                  </Form.Group>
-                  <Form.Group controlId='whereToFindMe'>
-                    <Form.Label>
-                      <h6>Where To Check My Content:</h6>
-                    </Form.Label>
-                    <Form.Control
-                      style={{ height: '15rem' }}
-                      as='textarea'
-                      type='whereToFindMe'
-                      placeholder={posts.whereToFindMe}
-                      value={whereToFindMe}
-                      onChange={(e) => setWhereToFindMe(e.target.value)}
-                    ></Form.Control>
-                  </Form.Group>
-                  <Button type='submit' variant='primary'>
-                    Update
-                  </Button>
-                </Form>
-              </Card.Body>
-            </Card>
-          ) : (
-            <Card className='profile-cards'>
-              <Card.Title style={{ padding: '1.2rem', textAlign: 'center' }}>
-                Evan Kay
-              </Card.Title>
-              <Card.Body style={{ marginTop: '-2rem' }}>
-                <h6>Who I am:</h6>
-                {posts.whoIAm}
-                <br />
-                <br />
-                <h6>What My Content Is:</h6>
-                {posts.whatIDo}
-                <br /> <br />
-                <h6>Where To Check My Content:</h6>
-                {posts.whereToFindMe}
-              </Card.Body>
-            </Card>
-          )}
-        </Col>
+
+        {!success && !updateSuccess ? (
+          <Loader />
+        ) : userInfo && userInfo.isAdmin ? (
+          <Col sm={12} md={12} lg={6} xl={6}>
+            <Form onSubmit={submitHandler}>
+              <Form.Group controlId='whoIAm'>
+                <Form.Label>
+                  <h6>Who I am:</h6>
+                </Form.Label>
+                <Form.Control
+                  style={{ height: '15rem' }}
+                  as='textarea'
+                  rows={2}
+                  type='whoIAm'
+                  placeholder={posts.whoIAm}
+                  value={whoIAm}
+                  onChange={(e) => setWhoIAm(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              <Form.Group controlId='whatIDo'>
+                <Form.Label>
+                  <h6>What My Content Is:</h6>
+                </Form.Label>
+                <Form.Control
+                  style={{ height: '15rem' }}
+                  as='textarea'
+                  type='whatIDo'
+                  placeholder={posts.whatIDo}
+                  value={whatIDo}
+                  onChange={(e) => setWhatIDo(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              <Form.Group controlId='whereToFindMe'>
+                <Form.Label>
+                  <h6>Where To Check My Content:</h6>
+                </Form.Label>
+                <Form.Control
+                  style={{ height: '15rem' }}
+                  as='textarea'
+                  type='whereToFindMe'
+                  placeholder={posts.whereToFindMe}
+                  value={whereToFindMe}
+                  onChange={(e) => setWhereToFindMe(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+              <Button type='submit' variant='primary'>
+                Update
+              </Button>
+            </Form>
+          </Col>
+        ) : (
+          <>
+            <Col
+              sm={12}
+              md={12}
+              lg={6}
+              xl={6}
+              style={{
+                textAlign: 'left',
+                margin: 'auto',
+              }}
+            >
+              <div className='move-row'></div>
+              <h6 className='heading'>Who I am:</h6>
+              <p className='home-txt'>{posts.whoIAm}</p>
+
+              <br />
+              <br />
+              <h6 className='heading'>Where To Check My Content:</h6>
+              <p className='home-txt'>{posts.whereToFindMe}</p>
+            </Col>
+            <Row className='what-I-Do-Row'>
+              <h6 className='heading'>What I Do:</h6>
+              <p className='home-txt'>{posts.whatIDo}</p>
+            </Row>
+          </>
+        )}
       </Row>
+      <div id='videos'></div>
+      <div style={{ marginTop: '10rem' }}></div>
+      <div>
+        <VideoScreen />
+      </div>
+
+      <div id='podcasts'></div>
+      <div style={{ marginTop: '12rem' }}></div>
+      <div>
+        <PodcastScreen />
+      </div>
+
+      <div id='pictures'></div>
+      <div style={{ marginTop: '10rem' }}></div>
+      <div>
+        <PictureScreen />
+      </div>
+      <div style={{ marginTop: '10rem' }}></div>
     </Container>
   )
 }
 
 export default HomeScreen
+
+/*
+
+ <div className='sep-line'></div>
+
+
+ */

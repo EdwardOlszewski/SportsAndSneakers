@@ -18,7 +18,7 @@ const PictureScreen = ({ match }) => {
   const dispatch = useDispatch()
 
   // Get page number from the URL
-  const pageNumber = match.params.pageNumber || 1
+  const pageNumber = 1
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -55,7 +55,7 @@ const PictureScreen = ({ match }) => {
       ) : (
         <div className='video-screen'>
           <ListGroup>
-            <h1 style={{ marginBottom: '1rem' }}>Gallery</h1>
+            <h1 className='bigHeading'>Gallery</h1>
           </ListGroup>
           <Row>
             {images.map((image) => (
@@ -65,7 +65,7 @@ const PictureScreen = ({ match }) => {
                 sm={6}
                 md={4}
                 lg={3}
-                xl={2}
+                xl={3}
                 style={{ paddingTop: '1rem' }}
               >
                 <Picture image={image} />
