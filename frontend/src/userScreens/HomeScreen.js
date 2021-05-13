@@ -15,7 +15,7 @@ import Meta from '../components/Meta'
 import MyImage from '../images/profilePic.jpg'
 
 const HomeScreen = () => {
-  // Assign useDispatch hook to dispatch actions
+  // Assign useDispatch hook to dispatch action
   const dispatch = useDispatch()
 
   // Declare new state variables and functions
