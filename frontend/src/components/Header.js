@@ -65,6 +65,12 @@ const Header = ({ match }) => {
               </h6>
             </a>
 
+            <a href='https://www.facebook.com/SportsandSneakers21'>
+              <h6 className='nav-icon'>
+                <i className='fab fa-facebook-square'></i>
+              </h6>
+            </a>
+
             <a href='https://www.instagram.com/sportsandsneakers2021'>
               <h6 className='nav-icon'>
                 <i className='fab fa-instagram-square'></i>
