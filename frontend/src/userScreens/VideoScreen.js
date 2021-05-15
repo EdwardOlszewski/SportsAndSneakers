@@ -35,7 +35,7 @@ const VideoScreen = ({ match }) => {
       ) : (
         <Row>
           {videos.items.map((youtubeVideo) => (
-            <Col xs={12} md={4}>
+            <Col xs={12} md={4} key={youtubeVideo.id.videoId}>
               <Video videoURL={youtubeVideo.id.videoId} />
             </Col>
           ))}

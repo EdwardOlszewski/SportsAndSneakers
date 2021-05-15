@@ -177,10 +177,3 @@ const HomeScreen = () => {
 }
 
 export default HomeScreen
-
-/*
-
- <div className='sep-line'></div>
-
-
- */

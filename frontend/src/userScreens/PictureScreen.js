@@ -85,22 +85,3 @@ const PictureScreen = ({ match }) => {
 }
 
 export default PictureScreen
-
-/*
-import { useMediaQuery } from 'react-responsive'
-
-import ImageCarousel from '../components/ImageCarousel'
-import NewestImages from '../components/NewestImages'
-
-  // Get if on mobile device or not
-  const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
-
-  <ListGroup>
-    <h1 style={{ marginBottom: '1rem' }}>Gallery</h1>
-    {isMobile ? (
-      <ImageCarousel images={images} />
-    ) : (
-      <NewestImages images={images} />
-    )}
-  </ListGroup>
-*/
