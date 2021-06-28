@@ -58,7 +58,7 @@ const HomeScreen = () => {
   }, [dispatch, posts, updateSuccess])
 
   return (
-    <Container style={{ marginTop: '10rem' }}>
+    <Container id='home' style={{ paddingTop: '8rem' }}>
       <Meta title='SportsAndSneakers' />
       <Row noGutters style={{ marginTop: '3rem' }}>
         <Col
@@ -127,7 +127,7 @@ const HomeScreen = () => {
             </Form>
           </Col>
         ) : (
-          <>
+          <React.Fragment>
             <Col
               sm={12}
               md={12}
@@ -151,7 +151,7 @@ const HomeScreen = () => {
               <h6 className='heading'>What I Do:</h6>
               <p className='home-txt'>{posts.whatIDo}</p>
             </Row>
-          </>
+          </React.Fragment>
         )}
       </Row>
       <div id='videos'></div>
@@ -161,13 +161,13 @@ const HomeScreen = () => {
       </div>
 
       <div id='podcasts'></div>
-      <div style={{ marginTop: '12rem' }}></div>
+      <div style={{ marginTop: '15rem' }}></div>
       <div>
         <PodcastScreen />
       </div>
 
       <div id='pictures'></div>
-      <div style={{ marginTop: '10rem' }}></div>
+      <div style={{ marginTop: '15rem' }}></div>
       <div>
         <PictureScreen />
       </div>

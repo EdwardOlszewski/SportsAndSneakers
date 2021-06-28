@@ -2,15 +2,49 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
-import { listVideosReducer } from './reducers/videosReducers.js'
-import { listYoutubeVideosReducer } from './reducers/videosReducers.js'
+import {
+  productListReducer,
+  productDetailsReducer,
+  productDeleteReducer,
+  productCreateReducer,
+  productUpdateReducer,
+  productReviewCreateReducer,
+  productTopRatedReducer,
+} from './reducers/productReducers'
+import { cartReducer } from './reducers/cartReducers'
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
+  userListReducer,
+  userDeleteReducer,
+  userUpdateReducer,
+} from './reducers/userReducers'
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
+  orderPayReducer,
+  orderDeliverReducer,
+  orderListMyReducer,
+  orderListReducer,
+  orderChargeReducer,
+  orderBilingReducer,
+} from './reducers/orderReducers'
 
-import { uploadImageReducer } from './reducers/imageReducers.js'
-import { createImageReducer } from './reducers/imageReducers.js'
-import { getAllImagesReducer } from './reducers/imageReducers.js'
-import { deleteImageReducer } from './reducers/imageReducers.js'
+import { sripeConstantReducer } from './reducers/stripeReducers'
 
-import { userLoginReducer } from './reducers/userReducers.js'
+import {
+  listVideosReducer,
+  listYoutubeVideosReducer,
+} from './reducers/videosReducers.js'
+
+import {
+  uploadImageReducer,
+  createImageReducer,
+  getAllImagesReducer,
+  deleteImageReducer,
+} from './reducers/imageReducers.js'
 
 import {
   listPostsReducer,
@@ -21,11 +55,41 @@ import {
 import { listPodcastsReducer } from './reducers/podcastReducers'
 
 const reducer = combineReducers({
+  // User Reducers
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
+  userList: userListReducer,
+  userDelete: userDeleteReducer,
+  userUpdate: userUpdateReducer,
+
+  // Product Reducers
+  productList: productListReducer,
+  productDetails: productDetailsReducer,
+  productDelete: productDeleteReducer,
+  productCreate: productCreateReducer,
+  productUpdate: productUpdateReducer,
+  productReviewCreate: productReviewCreateReducer,
+  productTopRated: productTopRatedReducer,
+
+  // Cart Reducers
+  cart: cartReducer,
+
+  // Order Reducers
+  orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
+  orderDeliver: orderDeliverReducer,
+  orderListMy: orderListMyReducer,
+  orderList: orderListReducer,
+  orderCharge: orderChargeReducer,
+  orderBilling: orderBilingReducer,
+  stripeConstant: sripeConstantReducer,
   listVideos: listVideosReducer,
   imageUpload: uploadImageReducer,
   imageCreate: createImageReducer,
   allImages: getAllImagesReducer,
-  userLogin: userLoginReducer,
   imageDelete: deleteImageReducer,
   youtubeVideos: listYoutubeVideosReducer,
   postList: listPostsReducer,
@@ -44,8 +108,8 @@ const initialState = {
 
 const middleware = [thunk]
 
-const devTools = applyMiddleware(...middleware)
-//const devTools = composeWithDevTools(applyMiddleware(...middleware))
+//const devTools = applyMiddleware(...middleware)
+const devTools = composeWithDevTools(applyMiddleware(...middleware))
 
 const store = createStore(reducer, initialState, devTools)
 

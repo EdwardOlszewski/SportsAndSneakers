@@ -6,7 +6,7 @@ const Footer = () => {
     <footer>
       <Container>
         <Row>
-          <Col className='text-center py-3'>
+          <Col className='text-center py-3' style={{ color: '#999999' }}>
             Copyright &copy; Sports And Sneakers Productions
           </Col>
         </Row>

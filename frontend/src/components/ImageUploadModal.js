@@ -32,7 +32,7 @@ const ImageUploadModal = () => {
   }
 
   return (
-    <>
+    <div>
       <Button className='upload-image' onClick={handleShow}>
         Upload New Image
       </Button>
@@ -46,7 +46,7 @@ const ImageUploadModal = () => {
         {loading ? (
           <Loader />
         ) : (
-          <>
+          <div>
             <Modal.Header closeButton>
               <Modal.Title>Upload Image</Modal.Title>
             </Modal.Header>
@@ -74,10 +74,10 @@ const ImageUploadModal = () => {
                 Close
               </Button>
             </Modal.Footer>
-          </>
+          </div>
         )}
       </Modal>
-    </>
+    </div>
   )
 }
 

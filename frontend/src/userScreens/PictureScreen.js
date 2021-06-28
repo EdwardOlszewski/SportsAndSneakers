@@ -48,14 +48,23 @@ const PictureScreen = ({ match }) => {
   }, [dispatch, pageNumber])
 
   return (
-    <>
+    <div>
       <Meta title='SportsAndSneakers - Gallery' />
       {loading || deleteLoading ? (
         <Loader />
       ) : (
         <div className='video-screen'>
           <ListGroup>
-            <h1 className='bigHeading'>Gallery</h1>
+            <h1
+              className='bigHeading'
+              style={{
+                margin: 'auto',
+                textAlign: 'center',
+                marginBottom: '2rem',
+              }}
+            >
+              Gallery
+            </h1>
           </ListGroup>
           <Row>
             {images.map((image) => (
@@ -75,12 +84,16 @@ const PictureScreen = ({ match }) => {
           <Nav style={{ marginTop: '.5rem' }}>
             <Paginate pages={pages} page={page} keyword={'pictures'} />
             <div style={{ marginLeft: '2rem' }}>
-              {userInfo && userInfo.isAdmin ? <ImageUploadModal /> : <></>}
+              {userInfo && userInfo.isAdmin ? (
+                <ImageUploadModal />
+              ) : (
+                <div> </div>
+              )}
             </div>
           </Nav>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

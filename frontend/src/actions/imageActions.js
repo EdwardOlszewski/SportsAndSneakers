@@ -15,7 +15,7 @@ import {
 } from '../constants/imageConstants'
 import { logout } from './userActions'
 
-export const uploadImage = (file) => async (dispatch, getState) => {
+export const uploadImage = (file, product) => async (dispatch, getState) => {
   const formData = new FormData()
   formData.append('image', file)
 
@@ -37,7 +37,9 @@ export const uploadImage = (file) => async (dispatch, getState) => {
       payload: data,
     })
 
-    dispatch(createImage({ data }))
+    if (!product) {
+      dispatch(createImage({ data }))
+    }
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -74,28 +76,30 @@ export const createImage = (imageURL) => async (dispatch, getState) => {
   }
 }
 
-export const getAllImages = (pageNumber = '') => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: IMAGE_LIST_REQUEST,
-    })
-    const { data } = await axios.get(`/api/images?pageNumber=${pageNumber}`)
+export const getAllImages =
+  (pageNumber = '') =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: IMAGE_LIST_REQUEST,
+      })
+      const { data } = await axios.get(`/api/images?pageNumber=${pageNumber}`)
 
-    dispatch({
-      type: IMAGE_LIST_SUCCESS,
-      payload: data,
-    })
-  } catch (error) {
-    const message =
-      error.response && error.response.data.message
-        ? error.response.data.message
-        : error.message
-    dispatch({
-      type: IMAGE_LIST_FAIL,
-      payload: message,
-    })
+      dispatch({
+        type: IMAGE_LIST_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      dispatch({
+        type: IMAGE_LIST_FAIL,
+        payload: message,
+      })
+    }
   }
-}
 
 export const deleteImage = (id) => async (dispatch, getState) => {
   try {

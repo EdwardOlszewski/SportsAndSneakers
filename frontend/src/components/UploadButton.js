@@ -30,7 +30,7 @@ const Picture = ({ image }) => {
               <i className='fas fa-trash'></i>
             </Button>
           ) : (
-            <></>
+            <div></div>
           )}
         </Card.Body>
       </Card>
