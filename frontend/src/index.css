@@ -150,7 +150,7 @@ a:hover {
 }
 .login-div {
   margin-top: -10rem;
-  height: 100vh;
+  min-height: 105vh;
   width: 100%;
   background-color: var(--red-color);
 }

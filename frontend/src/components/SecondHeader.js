@@ -66,7 +66,7 @@ const Header = () => {
 
                 <LinkContainer to='/cart' className='nav-a'>
                   <h6 className='nav-links'>
-                    <i className='fas fa-shopping-cart'></i> cart
+                    <i className='fas fa-shopping-cart'></i> Cart
                   </h6>
                 </LinkContainer>
 

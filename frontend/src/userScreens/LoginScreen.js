@@ -80,9 +80,6 @@ const LoginScreen = ({ location, history }) => {
           <h3>Log In</h3>
           <br />
 
-          {message && <Message variant='danger'>{message}</Message>}
-          {error && <Message variant='danger'>{error}</Message>}
-          {loading && <Loader />}
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='email'>
               <h6 className='form-label'> Email Address</h6>
@@ -118,10 +115,17 @@ const LoginScreen = ({ location, history }) => {
             </InputGroup>
 
             <br />
-            <Button type='submit' variant='primary' className='btn' block>
-              Log In
-            </Button>
+            {loading ? (
+              <Loader />
+            ) : (
+              <Button type='submit' variant='primary' className='btn' block>
+                Log In
+              </Button>
+            )}
           </Form>
+
+          {message && <Message variant='danger'>{message}</Message>}
+          {error && <Message variant='danger'>{error}</Message>}
 
           <Row className='py-3'>
             <Col>

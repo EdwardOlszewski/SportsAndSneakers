@@ -78,7 +78,7 @@ const Header = ({ match }) => {
 
                 <LinkContainer to='/cart' onClick={() => setExpanded(false)}>
                   <h6 className='nav-links'>
-                    <i className='fas fa-shopping-cart'></i> cart
+                    <i className='fas fa-shopping-cart'></i> Cart
                   </h6>
                 </LinkContainer>
 

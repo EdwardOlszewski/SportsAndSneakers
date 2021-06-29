@@ -85,8 +85,7 @@ const RegisterScreen = ({ location, history }) => {
 
         <Card className='card-content'>
           <h3>Sign Up</h3>
-          {message && <Message variant='danger'>{message}</Message>}
-          {loading && <Loader />}
+
           <Form onSubmit={submitHandler}>
             <h6 className='form-label'> First Name</h6>
             <Form.Group controlId='name'>
@@ -167,10 +166,16 @@ const RegisterScreen = ({ location, history }) => {
             </InputGroup>
             <br />
 
-            <Button type='submit' variant='primary' className='btn' block>
-              Register
-            </Button>
+            {loading ? (
+              <Loader />
+            ) : (
+              <Button type='submit' variant='primary' className='btn' block>
+                Register
+              </Button>
+            )}
           </Form>
+
+          {message && <Message variant='danger'>{message}</Message>}
 
           <Row className='py-3'>
             <Col>
