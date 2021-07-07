@@ -43,5 +43,3 @@ const Picture = ({ image }) => {
 }
 
 export default Picture
-
-//<i className='fas fa-trash-alt'></i>

@@ -10,15 +10,7 @@ import {
 } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 // Components
-import {
-  Table,
-  Button,
-  Row,
-  Col,
-  Image,
-  Card,
-  Container,
-} from 'react-bootstrap'
+import { Table, Button, Row, Col, Image, Card } from 'react-bootstrap'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Paginate from '../components/Paginate'

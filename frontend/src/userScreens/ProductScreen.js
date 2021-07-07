@@ -1,17 +1,14 @@
 // Dependencies
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 // Actions
 import { listProductDetails } from '../actions/productActions'
-import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 // Components
 import {
   Row,
   Col,
   Image,
   ListGroup,
-  Card,
   Button,
   Form,
   Container,
@@ -24,9 +21,6 @@ const ProductScreen = ({ history, match }) => {
   // Assign useDispatch hook
   const dispatch = useDispatch()
 
-  // Get poduct ID from the URL
-  const ID = match.params.id
-
   // Create stateful values and functions
   const [qty, setQty] = useState(1)
   const [size, setSize] = useState(0)
@@ -34,9 +28,6 @@ const ProductScreen = ({ history, match }) => {
   // Pull data from the redux store
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
-
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
 
   // Function called on submit
   const addToCartHandler = () => {

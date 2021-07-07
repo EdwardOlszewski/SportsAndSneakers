@@ -37,6 +37,11 @@ const ShopScreen = ({ match }) => {
         <Loader />
       ) : error ? (
         <Message variant='danger'>{error}</Message>
+      ) : products.length <= 0 ? (
+        <Message variant='danger'>
+          <h4>Shop is currently empty,</h4>
+          <h5>Check back soon!</h5>
+        </Message>
       ) : (
         <div className='info'>
           <Row>

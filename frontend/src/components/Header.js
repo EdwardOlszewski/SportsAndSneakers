@@ -164,11 +164,3 @@ const Header = ({ match }) => {
 }
 
 export default Header
-
-/*
-
-   <Navbar.Brand href='/'>
-            <Image src={bannerPic}></Image>
-          </Navbar.Brand>
-
-*/

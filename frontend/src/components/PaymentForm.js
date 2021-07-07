@@ -36,7 +36,7 @@ const PaymentForm = ({ updateBillingInfo, billingDetails, history }) => {
 
     if (!error) {
       const { id } = paymentMethod
-      var amount = parseInt(order.totalPrice * 100)
+      let amount = parseInt(order.totalPrice * 100, 10)
       dispatch(cardCharge(id, amount, order._id))
     }
   }

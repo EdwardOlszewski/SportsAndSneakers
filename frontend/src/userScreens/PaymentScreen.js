@@ -41,9 +41,6 @@ const PaymentScreen = ({ match, history }) => {
   const orderCharge = useSelector((state) => state.orderCharge)
   const { loading: chargeLoading, success: chargeSuccess } = orderCharge
 
-  const stripeConstant = useSelector((state) => state.stripeConstant)
-  const { stripe } = stripeConstant
-
   const stripePromise = loadStripe(
     'pk_live_51J2mhaBWMiyD5hobMBftOOJi1TKZxuvjpIZb621BczguxeUcGc6p58lXdWYsK7SwINl43G2c62Y2Bg4ssYcmRpY700TmmlEnEj'
   )

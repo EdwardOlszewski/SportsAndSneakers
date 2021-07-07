@@ -1,16 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../actions/userActions'
-import { Link } from 'react-scroll'
 import WindowSize from '../components/WindowSize'
 
 const Header = () => {
   // Assign useDispatch hook to dispatch action
   const dispatch = useDispatch()
-
-  console.log(window.location.href)
 
   const size = WindowSize()
 
@@ -127,11 +124,3 @@ const Header = () => {
 }
 
 export default Header
-
-/*
-
-   <Navbar.Brand href='/'>
-            <Image src={bannerPic}></Image>
-          </Navbar.Brand>
-
-*/

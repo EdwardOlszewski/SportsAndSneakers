@@ -39,12 +39,12 @@ const RegisterScreen = ({ location, history }) => {
 
   // Pull data from the redux store
   const userRegister = useSelector((state) => state.userRegister)
-  const { loading, error, success, userInfo } = userRegister
+  const { loading, error, userInfo } = userRegister
 
   //Function to show password
   const showPassHandler = (e) => {
     e.preventDefault()
-    if (passVis == 'password') {
+    if (passVis === 'password') {
       setPassVis('text')
     } else {
       setPassVis('password')
@@ -135,7 +135,7 @@ const RegisterScreen = ({ location, history }) => {
                   <i
                     onClick={showPassHandler}
                     class={
-                      passVis == 'password' ? 'fas fa-eye-slash' : 'fas fa-eye'
+                      passVis === 'password' ? 'fas fa-eye-slash' : 'fas fa-eye'
                     }
                   ></i>
                 </InputGroup.Text>
@@ -158,7 +158,7 @@ const RegisterScreen = ({ location, history }) => {
                   <i
                     onClick={showPassHandler}
                     class={
-                      passVis == 'password' ? 'fas fa-eye-slash' : 'fas fa-eye'
+                      passVis === 'password' ? 'fas fa-eye-slash' : 'fas fa-eye'
                     }
                   ></i>
                 </InputGroup.Text>

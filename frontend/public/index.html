@@ -15,6 +15,11 @@
       rel="stylesheet"
     />
 
+    <script>
+      // See https://github.com/facebook/react/issues/20829#issuecomment-802088260
+      if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer
+    </script>
+
     <link
       as="style"
       rel="stylesheet preload prefetch"

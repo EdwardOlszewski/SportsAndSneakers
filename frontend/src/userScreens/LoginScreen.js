@@ -41,7 +41,7 @@ const LoginScreen = ({ location, history }) => {
   //Function to show password
   const showPassHandler = (e) => {
     e.preventDefault()
-    if (passVis == 'password') {
+    if (passVis === 'password') {
       setPassVis('text')
     } else {
       setPassVis('password')
@@ -107,7 +107,7 @@ const LoginScreen = ({ location, history }) => {
                   <i
                     onClick={showPassHandler}
                     className={
-                      passVis == 'password' ? 'fas fa-eye-slash' : 'fas fa-eye'
+                      passVis === 'password' ? 'fas fa-eye-slash' : 'fas fa-eye'
                     }
                   ></i>
                 </InputGroup.Text>

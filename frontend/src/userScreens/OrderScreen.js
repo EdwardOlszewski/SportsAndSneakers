@@ -1,6 +1,5 @@
 // Dependencies
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 // Actions
 import { getOrderDetails, deliverOrder } from '../actions/orderActions'

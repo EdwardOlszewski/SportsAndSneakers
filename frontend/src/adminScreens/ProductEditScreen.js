@@ -85,7 +85,7 @@ const ProductEditScreen = ({ match, history }) => {
       setImage(imageURL)
     } else if (!product.name || product._id !== productId) {
       dispatch(listProductDetails(productId))
-    } else if (success == true) {
+    } else if (success === true) {
       setName(product.name)
       setImage(product.image)
       setDescription(product.description)
